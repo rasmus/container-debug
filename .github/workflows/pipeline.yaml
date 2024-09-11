@@ -7,6 +7,7 @@ on:
       bake-convention:
         required: false
         default: 'default'
+        type: string
 
 jobs:
   build:
