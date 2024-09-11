@@ -1,0 +1,21 @@
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+      bake-convention:
+        required: false
+        default: 'default'
+
+jobs:
+  build:
+    runs-on:
+    - ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: rasmus/action-bake@v1
+      with:
+        version: '0.26.39-beta'
+        args: 'run --convention=${{ inputs.bake-convention }} --build-version ${{ inputs.version }} --destination="container>rasmus" --push-container-latest-tag=true'

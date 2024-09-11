@@ -1,0 +1,11 @@
+name: pull-requests
+
+on:
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  pipeline:
+    uses: ./.github/workflows/pipeline.yaml
+    with:
+      version: 0.0.${{ github.run_number }}
