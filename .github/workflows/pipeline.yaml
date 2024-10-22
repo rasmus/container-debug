@@ -22,11 +22,16 @@ jobs:
     - ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-dotnet@v4
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install .NET
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
-    - run: |
+
+    - name: Bake container
+      run: |
         dotnet tool install --global Bake --version 0.29.42-beta
         export PATH="$PATH:/home/ubuntu/.dotnet/tools"
 
@@ -38,3 +43,5 @@ jobs:
       env:
         dockerhub_username: ${{ inputs.dockerhub-username }}
         dockerhub_password: ${{ secrets.dockerhub-password }}
+
+
