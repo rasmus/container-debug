@@ -1,0 +1,12 @@
+name: develop
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  pipeline:
+    uses: ./.github/workflows/pipeline.yaml
+    with:
+      version: 1.0.${{ github.run_number }}
+      bake-convention: 'Release'
