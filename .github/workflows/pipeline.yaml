@@ -27,4 +27,4 @@ jobs:
           --convention=${{ inputs.bake-convention }} \
           --build-version ${{ inputs.version }} \
           --destination="container>rasmus" \
-          --push-container-latest-tag=true'
+          --push-container-latest-tag=true
