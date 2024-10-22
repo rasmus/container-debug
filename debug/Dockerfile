@@ -47,6 +47,7 @@ RUN \
         nmap \
         openssl \
         socat \
+        sudo \
         telnet \
         tcpdump \
         traceroute \
@@ -71,5 +72,18 @@ RUN \
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
     chmod +x kubectl && \
     mv kubectl /usr/local/bin/kubectl
+
+# Add a user
+RUN \
+    adduser \
+        --disabled-password \
+        --uid 1000 \
+        --shell /bin/bash \
+        debug \
+        && \
+    echo '%debug ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER debug
+WORKDIR /home/debug
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]
