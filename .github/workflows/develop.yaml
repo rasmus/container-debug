@@ -10,3 +10,6 @@ jobs:
     with:
       version: 1.0.${{ github.run_number }}
       bake-convention: 'Release'
+      dockerhub-username: "${{ vars.DOCKERHUB_USERNAME }}"
+    secrets:
+      dockerhub-password: "${{ secrets.DOCKERHUB_PASSWORD }}"
