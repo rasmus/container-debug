@@ -2,7 +2,7 @@
 
 This repository contains the Dockerfile for a versatile debug container04. This container is equipped with a variety of networking and system utilities, making it an ideal tool for debugging and troubleshooting network issues, testing connectivity, and performing various administrative tasks in e.g. a Kubernetes cluster.
 
-- https://hub.docker.com/u/rasmus/debug
+- https://hub.docker.com/r/rasmus/debug
 
 ### Run in Kubernetes
 
