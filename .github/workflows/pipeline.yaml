@@ -18,5 +18,5 @@ jobs:
     - uses: actions/checkout@v4
     - uses: rasmus/action-bake@v1
       with:
-        version: '0.26.39-beta'
+        version: 'v0.28.41-beta'
         args: 'run --convention=${{ inputs.bake-convention }} --build-version ${{ inputs.version }} --destination="container>rasmus" --push-container-latest-tag=true'
