@@ -16,7 +16,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: rasmus/action-bake@v1
+    - uses: actions/setup-dotnet@v4
       with:
-        version: '0.28.41-beta'
-        args: 'run --convention=${{ inputs.bake-convention }} --build-version ${{ inputs.version }} --destination="container>rasmus" --push-container-latest-tag=true'
+        dotnet-version: '8.0.x'
+    - run: |
+        dotnet tool install --global Bake --version 0.28.41-beta
+        export PATH="$PATH:/home/ubuntu/.dotnet/tools"
+
+        bake run \
+          --convention=${{ inputs.bake-convention }} \
+          --build-version ${{ inputs.version }} \
+          --destination="container>rasmus" \
+          --push-container-latest-tag=true'
